@@ -9,7 +9,10 @@ header {
   margin-top: 50px !important;
 }
 
+.brand-logo{
+  font-family: 'Long Cang', cursive;
 
+}
 .intro {
   position: absolute !important;
   top: 50% !important;
