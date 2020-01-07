@@ -19,14 +19,14 @@
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo">Jean Forteroche</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="#">Billets</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="index.php?controller=adminController&task=login">Connexion</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="#">Billets</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="index.php?controller=adminController&task=login">Connexion</a></li>

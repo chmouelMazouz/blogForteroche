@@ -93,22 +93,22 @@ class ArticleController extends Controller {
 
     public function createAction(){
 
-        $title = null;
+        $title = '';
         if (!empty($_POST['title'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $title = htmlspecialchars($_POST['title']);
         }
-        $introduction = null;
+        $introduction = '';
         if (!empty($_POST['introduction'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $introduction= htmlspecialchars($_POST['introduction']);
         }
-        $content = null;
+        $content = '';
         if (!empty($_POST['content'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $content = htmlspecialchars($_POST['content']);
         }
-        $slug= null;
+        $slug= '';
         if (!empty($_POST['slug'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $slug = htmlspecialchars($_POST['slug']);

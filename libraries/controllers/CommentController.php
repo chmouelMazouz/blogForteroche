@@ -1,5 +1,6 @@
 <?php
 namespace Controllers;
+use Models\CommentModel;
 
 class CommentController extends Controller
 {
@@ -52,7 +53,6 @@ class CommentController extends Controller
 
 // 4. Redirection vers l'article en question :
         \Http::redirect("index.php?controller=articleController&task=show&id=" . $article_id);
-
     }
 
 
@@ -89,6 +89,7 @@ class CommentController extends Controller
         \Http::redirect("index.php?controller=articleController&task=show&id=" . $article_id);
     }
 
+
     public function flagComment()
     {
         $flag = false;
@@ -105,38 +106,107 @@ class CommentController extends Controller
 
     public function findAllFlag()
     {
-
-
-            $signalements = $this->model->findAllFlag();
-            \Renderer::render('articles/showFlag',compact('signalements'));
-
-
-
-
+        $signalements = $this->model->findAllFlag();
+        \Renderer::render('articles/showFlag', compact('signalements'));
     }
 
-        /*if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+    public function showNewFlag()
+    {
+        $signalements = $this->model->findAllFlag();
+        \Renderer::render('articles/showNewFlag', compact('signalements'));
+    }
+
+    /*if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+        die("Ho ! Fallait préciser le paramètre id en GET !");
+    }
+
+    $id = $_GET['id'];
+
+
+     * 3. Vérification de l'existence du commentaire
+
+    $signalement = $this->model->find($id);
+    if (!$signalement) {
+        die("Aucun commentaire n'a l'identifiant $id !");
+    }
+
+
+     * 4. Suppression réelle du commentaire
+     * On récupère l'identifiant de l'article avant de supprimer le commentaire
+
+    $id = $signalement['id'];
+    $this->model->findAllFlag($id);
+}
+    \Renderer::render('articles/showFlag', compact('author','content'));
+*/
+
+    public function deleteCommentFlag()
+    {
+
+        /**
+         * 1. Récupération du paramètre "id" en GET
+         */
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
         }
 
         $id = $_GET['id'];
 
-
+        /**
          * 3. Vérification de l'existence du commentaire
-
-        $signalement = $this->model->find($id);
-        if (!$signalement) {
+         */
+        $signalements = $this->model->find($id);
+        if (!$signalements) {
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
-
+        /**
          * 4. Suppression réelle du commentaire
          * On récupère l'identifiant de l'article avant de supprimer le commentaire
+         */
+        $this->model->delete($id);
+        /**
+         * 5. Redirection vers l'article en question
+         */
 
-        $id = $signalement['id'];
-        $this->model->findAllFlag($id);
+        \Http::redirect("index.php?controller=commentController&task=findAllFlag");
+
     }
-        \Renderer::render('articles/showFlag', compact('author','content'));
-*/
+
+    public function updateCommentFlag()
+    {
+
+        /**
+         * 1. Récupération du paramètre "id" en GET
+         */
+
+        $id = ($_GET['id']);
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        } else {
+            $flag = false;
+            $this->model->updateCommentFlag($flag, $id);
+        }
+
+        \Http::redirect("index.php?controller=commentController&task=showNewFlag");
+
+
+
+        /**
+         * 3. Vérification de l'existence du commentaire
+         */
+
+
+
+        /**
+         * 4. Suppression réelle du commentaire
+         * On récupère l'identifiant de l'article avant de supprimer le commentaire
+         */
+        /**
+         * 5. Redirection vers l'article en question
+         */
+
+
+    }
 }
 
