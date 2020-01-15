@@ -30,16 +30,6 @@ class CommentModel extends Model{
         return $signalements;
 
     }
-    public function showNewFlag()
-    {
-        $query = $this->pdo->prepare("SELECT * FROM comments WHERE flag = :flag");
-        $query->execute();
-        $signalements = $query->fetchAll();
-        return $signalements;
-
-    }
-
-
 
     public function insert(string $author, string $content, int $article_id): void
     {
@@ -52,19 +42,5 @@ class CommentModel extends Model{
         $query = $this->pdo->prepare("DELETE FROM comments WHERE id = :id");
         $query->execute(['id' => $id]);
     }
-
-    public function updateCommentFlag(int $id, bool $flag): void
-    {
-        $query = $this->pdo->prepare("UPDATE comments SET flag = :flag WHERE id = :id");
-        $query->execute(compact('id', 'flag'));
-    }
-
-
-
-
-
-
-
-
 
 }

@@ -1,5 +1,6 @@
 <?php
 namespace Controllers;
+use Models\AdminModel;
 use Models\CommentModel;
 
 class CommentController extends Controller
@@ -110,11 +111,7 @@ class CommentController extends Controller
         \Renderer::render('articles/showFlag', compact('signalements'));
     }
 
-    public function showNewFlag()
-    {
-        $signalements = $this->model->findAllFlag();
-        \Renderer::render('articles/showNewFlag', compact('signalements'));
-    }
+
 
     /*if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
         die("Ho ! Fallait préciser le paramètre id en GET !");
@@ -185,10 +182,9 @@ class CommentController extends Controller
             die("Ho ! Fallait préciser le paramètre id en GET !");
         } else {
             $flag = false;
-            $this->model->updateCommentFlag($flag, $id);
+            $this->model->flagComment($flag, $id);
         }
-
-        \Http::redirect("index.php?controller=commentController&task=showNewFlag");
+        \Http::redirect("index.php?controller=commentController&task=findAllFlag");
 
 
 
@@ -208,5 +204,33 @@ class CommentController extends Controller
 
 
     }
+
+    public function contact (){
+        \Renderer::render('articles/contactForm');
+
+    }
+
+public function contactAction (){
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+
+            $to = 'chmouelmazouz@gmail.com';
+            $subject ="Nouveau message :" . $title;
+            $message = "Vous avez reçu un nouveau message : " . $content ;
+            $headers = 'from: chmouelmazouz@gmail.com';
+
+            $this->sendMail($to, $subject, $message, $headers);
+            \Renderer::render('articles/contactConfirm');
+
+
+    }
+
+    public function sendMail($to,$subject,$message,$headers){
+
+        mail($to, $subject, $message,$headers);
+    }
+
+
+
 }
 

@@ -134,7 +134,7 @@ class ArticleController extends Controller {
 
             \Renderer::render('articles/update', compact('article'));
         }else {
-            \Http::redirect('login.php');
+            \Renderer::render('articles/login');
 
         }
 

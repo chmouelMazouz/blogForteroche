@@ -4,6 +4,7 @@ namespace Models;
 
 
 use Models\Model;
+use Controllers\AdminController;
 class AdminModel extends Model
 {
 
@@ -23,6 +24,8 @@ class AdminModel extends Model
         $query->execute(compact('email', 'pseudo', 'password'));
     }
 
+
+
     public function login(string $pseudo, string $password)
     {
 
@@ -31,7 +34,7 @@ class AdminModel extends Model
         $query->execute();
         $result = $query->fetch();
 
-        var_dump($result);
+        //var_dump($result);
 
 
         if (password_verify($password, $result["password"])) {
@@ -39,6 +42,28 @@ class AdminModel extends Model
         } else {
             return false;
         }
+    }
+
+    public function updatePassword($email,$password){
+        $password = $this->hashPassword($password);
+        $query = $this->pdo->prepare("UPDATE admins SET password = :password WHERE email = :email");
+        $query->execute(compact('email', 'password'));
+    }
+
+
+
+    public function updateMyCount($pseudo,$password){
+        $password = $this->hashPassword($password);
+        $query = $this->pdo->prepare("UPDATE admins SET password = :password where pseudo = :pseudo ");
+        $query->execute(compact( 'password','pseudo'));
+    }
+
+    public function findMail($email): array
+    {
+        $query = $this->pdo->prepare("SELECT email FROM admins WHERE email = :email");
+        $query->execute(['email' => $email]);
+        $result = $query->fetchAll();
+        return $result;
     }
 
 
