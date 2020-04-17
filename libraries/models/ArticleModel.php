@@ -3,11 +3,11 @@
 namespace Models;
 use Models\Model;
 
-class ArticleModel extends Model{
+class   ArticleModel extends Model{
 
         protected $table = "articles";
 
-    public function updateArticle(string $title, string $introduction, string $content, string $slug, int $id): void
+    public function updateArticle(string $title,string $slug, string $introduction, string $content,  int $id): void
     {
 
         $query = $this->pdo->prepare("UPDATE articles SET title = :title, slug = :slug, introduction = :introduction, content = :content, created_at = NOW() WHERE id = :id");

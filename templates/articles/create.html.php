@@ -4,7 +4,7 @@
     <input type="text" name="title" placeholder="titre de l'article !">
     <input type="text" name="slug" placeholder="slug">
     <input type="text" name="introduction" placeholder="introduction">
-    <textarea name="content" id="" cols="30" rows="10" placeholder="Contenu "></textarea>
+    <textarea class="tinymce" name="content" id="" cols="30" rows="10" placeholder="Contenu "></textarea>
 
     <button>Commenter !</button>
 </form>

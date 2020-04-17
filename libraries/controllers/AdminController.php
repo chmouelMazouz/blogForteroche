@@ -37,7 +37,7 @@ class AdminController extends Controller
         $admin->register($email, $pseudo, $password);
         session_start();
         $_SESSION['pseudo'] = $pseudo;
-        \Http::redirect('index.php');
+        \Renderer::render('articles/registerConfirm');
     }
 
     public function login()
@@ -55,7 +55,7 @@ class AdminController extends Controller
         if($connect){
             session_start();
             $_SESSION["pseudo"] = $pseudo;
-            \Http::redirect('index.php');
+            \Renderer::render('articles/layoutBackOffice');
         }else{
             \Http::redirect('index.php?controller=adminController&task=login&connect=false');
         }
@@ -97,6 +97,8 @@ class AdminController extends Controller
             $headers = 'From: chmouelmazouz@gmail.com';
 
             $this->sendMail($to, $subject, $message, $headers);
+            \Renderer::render('articles/newPasswordByMail');
+
 
         }else{
             echo 'Introuvable';
@@ -130,6 +132,8 @@ class AdminController extends Controller
 
         $admin = new AdminModel();
         $admin->updateMyCount($pseudo,$password);
+        \Renderer::render('articles/updateMyCount');
+
 
     }
 
@@ -170,6 +174,11 @@ class AdminController extends Controller
             \Renderer::render('articles/showAdmin',compact('articles'));
         }
 
+    }
+
+    public function showBackOffice(){
+        session_start();
+        \Renderer::render('articles/layoutBackOffice');
     }
 
 }

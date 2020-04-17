@@ -27,7 +27,7 @@ class CommentController extends Controller
         $content = null;
         if (!empty($_POST['content'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
-            $content = htmlspecialchars($_POST['content']);
+            $content = $_POST['content'];
         }
 
 // Enfin l'id de l'article
@@ -101,7 +101,6 @@ class CommentController extends Controller
         } else {
             $flag = true;
             $this->model->flagComment($flag, $id);
-            echo('Le commentaire a bien été signalé');
         }
     }
 
@@ -181,28 +180,10 @@ class CommentController extends Controller
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
         } else {
-            $flag = false;
+            $flag = fa;
             $this->model->flagComment($flag, $id);
         }
         \Http::redirect("index.php?controller=commentController&task=findAllFlag");
-
-
-
-        /**
-         * 3. Vérification de l'existence du commentaire
-         */
-
-
-
-        /**
-         * 4. Suppression réelle du commentaire
-         * On récupère l'identifiant de l'article avant de supprimer le commentaire
-         */
-        /**
-         * 5. Redirection vers l'article en question
-         */
-
-
     }
 
     public function contact (){

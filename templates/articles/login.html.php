@@ -1,5 +1,16 @@
+<div id="index-banner" class="parallax-container parallax-header">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <br><br>
+            <h1 class="header center ">Page de connexion</h1>
+
+        </div>
+    </div>
+    <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
 <div class="container">
-    <h2 class="blue-text">Se connecter</h2>
+    <h3 class="blue-text">Se connecter</h3>
     <div>
         <?php if(isset($_GET["connect"]) && $_GET["connect"] == "false"){
             ?>

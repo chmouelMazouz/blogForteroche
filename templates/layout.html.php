@@ -15,35 +15,25 @@ if (session_id() == "")
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="https://fonts.googleapis.com/css?family=Long+Cang&display=swap" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
+    <script>tinymce.init({selector:'.tinymce'});</script>
 </head>
 
 <body>
-
+<div class="navbar-fixed">
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo">Jean Forteroche</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="#">Billets</a></li>
+            <li><a href="index.php?controller=articleController&task=biographie">Biographie</a>
             <li><a href="index.php?controller=commentController&task=contact">Contact</a>
-            <li><a href="index.php?controller=adminController&task=registerAction">Inscrire</a>
-
-            <?php
-            if (!empty($_SESSION)) {
-                if ($_SESSION["pseudo"] != "") {
-                    echo '<li><a href="index.php?controller=adminController&task=updateCount">Mon compte</a></li>';
+                <?php
+                if (!empty($_SESSION)){
+                    if($_SESSION["pseudo"]!=""){
+                        echo'<li><a href="index.php?controller=adminController&task=showBackOffice">Back-Office</a></li>';
+                    }
                 }
-            }
-            ?>
-
-            <?php
-            if (!empty($_SESSION)) {
-                if ($_SESSION["pseudo"] != "") {
-                    echo '<li><a href="index.php?controller=adminController&task=showAdmin">Les admins</a></li>';
-                }
-            }
-            ?>
+                ?>
             <?php
             if (!empty($_SESSION)){
                 if($_SESSION["pseudo"]!=""){
@@ -54,15 +44,12 @@ if (session_id() == "")
             }
             ?>
 
-
-
-
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="#">Billets</a></li>
-            <li><a href="#">Contact</a>
+            <li><a href="index.php?controller=articleController&task=biographie">Biographie</a>
+            <li><a href="index.php?controller=commentController&task=contact">Contact</a>
             <?php
             if (!empty($_SESSION)){
                 if($_SESSION["pseudo"]!=""){
@@ -76,8 +63,9 @@ if (session_id() == "")
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
+</div>
 
-    <?= $pageContent; ?>
+    <?= $pageContent; ?><br>
 
 <footer class="page-footer teal">
     <div class="footer-copyright">

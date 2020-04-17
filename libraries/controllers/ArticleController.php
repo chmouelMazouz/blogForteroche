@@ -13,13 +13,25 @@ class ArticleController extends Controller {
 // On utilisera ici la méthode query (pas besoin de préparation car aucune variable n'entre en jeu)
 //$resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
 // On fouille le résultat pour en extraire les données réelles
-        $articles = $this->model->findAll("created_at DESC");
+        session_start();
+        $articles = $this->model->findLast("created_at DESC LIMIT 3");
         /**
          * 3. Affichage
          */
         $pageTitle = "Accueil";
         \Renderer::render('articles/index',compact('pageTitle','articles'));
     }
+
+    public function indexArticle(){
+        session_start();
+
+        $articles = $this->model->findAll("created_at DESC");
+        $pageTitle = "liste des billets";
+        \Renderer::render('articles/showAllArticle',compact('pageTitle','articles'));
+
+    }
+
+
 
     public function show()
         //Montrer un article
@@ -85,7 +97,7 @@ class ArticleController extends Controller {
         /**
          * 5. Redirection vers la page d'accueil
          */
-        \Http::redirect('index.php');
+        \Renderer::render('articles/showAllArticle');
     }
     public function create(){
         \Renderer::render('articles/create');
@@ -96,7 +108,7 @@ class ArticleController extends Controller {
         $title = '';
         if (!empty($_POST['title'])) {
             // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
-            $title = htmlspecialchars($_POST['title']);
+            $title = $_POST['title'];
         }
         $introduction = '';
         if (!empty($_POST['introduction'])) {
@@ -116,6 +128,8 @@ class ArticleController extends Controller {
 
         $this->model->insertArticle($title, $slug, $introduction, $content);
         \Http::redirect('index.php');
+
+
 
     }
 
@@ -137,8 +151,6 @@ class ArticleController extends Controller {
             \Renderer::render('articles/login');
 
         }
-
-
     }
 
     function updateArticle(){
@@ -170,8 +182,13 @@ class ArticleController extends Controller {
         }
 
         $this->model->updateArticle($title, $slug, $introduction, $content,$id);
-        \Http::redirect('index.php');
+        \Renderer::render('articles/confirmUpdateArticle');
+
     }
 
+    function biographie(){
+        \Renderer::render('articles/biographie');
 
-}
+    }
+
+    }

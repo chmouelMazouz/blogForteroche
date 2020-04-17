@@ -43,6 +43,10 @@ p {
     width: 100%;
   }
 
+.parallax-header {
+  height: 210px !important;
+}
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;

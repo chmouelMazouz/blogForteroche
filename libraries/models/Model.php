@@ -51,4 +51,17 @@ abstract class Model
         return $articles;
 
     }
+    public function findLast(?string $order = ""): array
+    {
+        $sql = "SELECT * FROM {$this->table }";
+        if ($order) {
+            $sql .= " ORDER BY " . $order;
+        }
+        $resultats = $this->pdo->query($sql);
+// On fouille le résultat pour en extraire les données réelles
+        $articles = $resultats->fetchAll();
+
+        return $articles;
+
+    }
 }
