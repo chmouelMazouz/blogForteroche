@@ -7,8 +7,22 @@
  */
 
 
+.brand-logo{
+  font-family: 'Akronim',cursive ;
 
-
+}
+.title-article{
+  font-family: 'Bree Serif', cursive;
+  font-size: 50px;
+  margin-top: 100px;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+.title-style{
+  font-family: 'Akronim',cursive ;
+  color:white !important;
+  font-size: 5em;
+}
 
 
 nav ul a,
@@ -60,5 +74,5 @@ p {
 }
 
 footer.page-footer {
-  margin: 0;
+  margin: 0 !important;
 }

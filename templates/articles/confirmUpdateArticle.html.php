@@ -8,10 +8,9 @@
             </div>
         </div>
     </div>
-
     <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>
 </div>
 <div class="container">
-<h4>Modification de l'article</h4>
-<p>L'article a bien été mis à jour !</p>
+    <h4>Modification de l'article</h4>
+        <p>L'article a bien été mis à jour !</p>
 </div>

@@ -3,7 +3,6 @@
         <div class="container">
             <br><br>
             <h3 class="header center ">Modification</h3>
-
         </div>
     </div>
     <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>

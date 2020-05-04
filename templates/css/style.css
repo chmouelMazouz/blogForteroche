@@ -8,6 +8,9 @@
 header {
   margin-top: 50px !important;
 }
+.logo-container{
+  font-family: 'Akronim',cursive ;
+}
 
 .brand-logo{
   font-family: 'Long Cang', cursive;

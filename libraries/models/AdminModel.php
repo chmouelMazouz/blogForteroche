@@ -10,13 +10,10 @@ class AdminModel extends Model
 
     protected $table = "admins";
 
-
-
     public function hashPassword($password)
     {
         return password_hash($password, PASSWORD_BCRYPT);
     }
-
 
     public function register(string $email, string $pseudo, string $password): void
     {
@@ -24,19 +21,12 @@ class AdminModel extends Model
         $query->execute(compact('email', 'pseudo', 'password'));
     }
 
-
-
     public function login(string $pseudo, string $password)
     {
-
         $query = $this->pdo->prepare('SELECT * FROM admins WHERE (pseudo = :pseudo)');
         $query->bindValue(':pseudo', $pseudo);
         $query->execute();
         $result = $query->fetch();
-
-        //var_dump($result);
-
-
         if (password_verify($password, $result["password"])) {
             return true;
         } else {
@@ -49,9 +39,7 @@ class AdminModel extends Model
         $query = $this->pdo->prepare("UPDATE admins SET password = :password WHERE email = :email");
         $query->execute(compact('email', 'password'));
     }
-
-
-
+    
     public function updateMyCount($pseudo,$password){
         $password = $this->hashPassword($password);
         $query = $this->pdo->prepare("UPDATE admins SET password = :password where pseudo = :pseudo ");
@@ -65,6 +53,4 @@ class AdminModel extends Model
         $result = $query->fetchAll();
         return $result;
     }
-
-
 }

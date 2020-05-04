@@ -16,7 +16,7 @@
         <div class="col s4 m4">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg">
+                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg" alt="article-photo">
                     <span class="card-title">Création d'articles</span>
                 </div>
                 <div class="card-content">
@@ -30,7 +30,7 @@
         <div class="col s4 m4">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg">
+                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg" alt="images">
                     <span class="card-title">Les billets</span>
                 </div>
                 <div class="card-content">
@@ -44,7 +44,7 @@
         <div class="col s4 m4">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg">
+                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg" alt="images">
                     <span class="card-title">Les signalements</span>
                 </div>
                 <div class="card-content">
@@ -58,7 +58,7 @@
         <div class="col s4 m4">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg">
+                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg" alt="inscription">
                     <span class="card-title">Inscription</span>
                 </div>
                 <div class="card-content">
@@ -72,7 +72,7 @@
         <div class="col s4 m4">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg">
+                    <img src="http://www.iter-avocats.fr/wp-content/uploads/2017/10/Default-article-photo.jpg" alt="compte">
                     <span class="card-title">Mon compte</span>
                 </div>
                 <div class="card-content">

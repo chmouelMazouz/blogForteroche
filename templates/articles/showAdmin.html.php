@@ -14,26 +14,22 @@
         <h5>Il n'y a pas encore d'admin(s)</h5>
     <?php else : ?>
         <h5>Il y a déjà <?= count($articles) ?> admin(s) : </h5>
-
-
-        <table class="striped">
-            <thead>
-            <tr>
-                <th>Mail</th>
-                <th>Pseudo</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($articles as $article) : ?>
+            <table class="striped">
+                <thead>
                 <tr>
-                    <td><?= $article['email'] ?></td>
-                    <td><?= $article['pseudo'] ?></td>
+                    <th>Mail</th>
+                    <th>Pseudo</th>
                 </tr>
-            <?php endforeach ?>
-            </tbody>
-        </table>
-
-
+                </thead>
+                <tbody>
+                    <?php foreach ($articles as $article) : ?>
+                        <tr>
+                            <td><?= $article['email'] ?></td>
+                            <td><?= $article['pseudo'] ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
     <?php endif ?>
 </div>
 

@@ -3,7 +3,6 @@
         <div class="container">
             <br><br>
             <h1 class="header center ">Réinitialisation du mot de passe</h1>
-
         </div>
     </div>
     <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>

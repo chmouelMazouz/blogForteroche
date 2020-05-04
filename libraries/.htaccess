@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{QUERY_STRING} !(?:^|&)controller= [NC]
+RewriteRule ^./*$ ./index.php
+RewriteRule ^./biographie*$ ./index.php?controller=articleController&task=biographie

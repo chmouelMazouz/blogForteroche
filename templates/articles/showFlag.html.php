@@ -13,15 +13,25 @@
     <h2>Aucun commentaire signalé</h2>
 <?php }else{?>
     <h2>Il y a déjà <?= count($signalements) ?> signalement(s) : </h2>
-
-    <?php foreach ($signalements as $signalement) { ?>
-        <h4><?= $signalement['author'] ?></h4>
-        <medium><?= $signalement['content'] ?></medium><br><br>
-        <a href="index.php?controller=commentController&task=deleteCommentFlag&id=<?= $signalement['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer le commentaire</a><br>
-        <a href="index.php?controller=commentController&task=updateCommentFlag&id=<?= $signalement['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir retirer ce signalement ?!`)">Retirer le signalement</a>
-
+        <table class="striped">
+            <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Contenu</th>
+            </tr>
+            </thead>
+                <tbody>
+                     <?php foreach ($signalements as $signalement) { ?>
+                     <tr>
+                    <td><?= $signalement['author'] ?></td>
+                    <td><?= $signalement['content'] ?></td>
+                    <td><a href="index.php?controller=commentController&task=deleteCommentFlag&id=<?= $signalement['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer le commentaire</a></td>
+                    <td><a href="index.php?controller=commentController&task=updateCommentFlag&id=<?= $signalement['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir retirer ce signalement ?!`)">Retirer le signalement</a></td>
+                </tr>
         <?php
     }//endforeach
-
+    
 }//endelse
  ?>
+                </tbody>
+        </table>

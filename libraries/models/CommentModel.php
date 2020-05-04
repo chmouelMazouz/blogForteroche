@@ -15,7 +15,7 @@ class CommentModel extends Model{
         return $commentaires;
     }
 
-    public function flagComment(bool $flag, int $id): void
+    public function flagComment(int $flag, int $id): void
     {
 
         $query = $this->pdo->prepare("UPDATE comments SET flag = :flag WHERE id = :id");
@@ -28,7 +28,6 @@ class CommentModel extends Model{
         $query->execute();
         $signalements = $query->fetchAll();
         return $signalements;
-
     }
 
     public function insert(string $author, string $content, int $article_id): void
